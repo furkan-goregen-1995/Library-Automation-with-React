@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import posed from 'react-pose';
 import UserConsumer from '../context'
-var uniqid = require('uniqid');
+import uuid from 'uuidv4';
+
 
 const Animation = posed.div({
     visible : {
@@ -51,7 +52,7 @@ class AddUser extends Component {
         e.preventDefault();
         const {name,department,writer} =this.state;
         const newUser = {
-            id: uniqid(),
+            id: uuid(),
             name: name,
             writer: writer,
             department: department

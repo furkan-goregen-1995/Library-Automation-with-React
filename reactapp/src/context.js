@@ -5,7 +5,7 @@ const reducer = (state, action) => {
 
     switch (action.type) {
         case "DELETE_USER":
-            axios.delete('http://localhost:3004/users/' + action.payload)
+            axios.delete('http://localhost:8000/users/' + action.payload)
                 .then((response) => {
                     console.log(response.data);
 
@@ -19,7 +19,7 @@ const reducer = (state, action) => {
 
         case "ADD_USER":
 
-            axios.post("http://localhost:3004/users", { name: action.payload.name, department: action.payload.department, writer: action.payload.writer }, { responseType: "POST" })
+            axios.post("http://localhost:8000/users", {id: action.payload.id, name: action.payload.name, department: action.payload.department, writer: action.payload.writer }, { responseType: "POST" })
                 .then((response) => {
                     console.log(response);
                 });
@@ -46,7 +46,7 @@ export class UserProvider extends Component {
     }
 
     componentDidMount = async () => {
-        const response = await axios.get("http://localhost:3004/users");
+        const response = await axios.get("http://localhost:8000/users");
 
         //AXIOS POST
         // axios.post("http://localhost:3004/users", { name: "Furkan", department: "Sanat", writer: "4000" }, { responseType: "POST" })
